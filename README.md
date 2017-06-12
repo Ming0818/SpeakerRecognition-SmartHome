@@ -11,6 +11,9 @@ PIL <br />
 
 ## Basic Model Training steps 
 1.) Recorded the audio wave files using PyAudio and generated the Spectrogram images from audio wave files using matplotlib specgram. <br />
-2.) Created a dataset text file of all the generated spectrogram images. The format of the file is same as used in Caffe for generating LMDB i.e. "file location"[SPACE]"ID"
-3.) Randomly Shuffled and  divided the dataset into train, validation and test sets.
+2.) Created a dataset text file of all the generated spectrogram images. The format of the file is same as used in Caffe for generating LMDB i.e. "file location"[SPACE]"ID". <br />
+3.) Randomly Shuffled and  divided the dataset into train, validation and test sets. <br />
+4.) Generated the LMDB and binary proto mean files. <br />
+5.) Training and fine tuning of the model. <br />
+
 
