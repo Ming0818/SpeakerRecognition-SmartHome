@@ -4,11 +4,11 @@ This project is an attempt to provide secure and natural vway to interact with y
 Both Speaker Recognition and Speech Recognition is implemented using Deep Learning Convolutional neural network. 
 
 ## Project Dependencies 
-PyAudio
-SciPy
-Matplotlib
-PIL 
+PyAudio <br />
+SciPy <br />
+Matplotlib <br />
+PIL <br />
 
 ## Model Training Flow 
-1.) Recorded the audio wave files using PyAudio and generated the Spectrogram images from audio wave files using matplotlib specgram. 
+1.) Recorded the audio wave files using PyAudio and generated the Spectrogram images from audio wave files using matplotlib specgram. <br />
 2.) 
