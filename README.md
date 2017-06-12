@@ -24,6 +24,12 @@ For inference, I have used Jetson Tx1 GPU embedded board. Both speaker recogniti
 
 For more details, result and demo videos please refer to Presentation.ppt
 
+## Demo Videos:
+
+Introductory Video: https://drive.google.com/open?id=0B6pxb6O5OWfeSWJnWWhnRG1mN0k <br/>
+Demo 1: https://drive.google.com/open?id=0B6pxb6O5OWfeT201QnNYWk1nMzQ <br/>
+Demo 2: https://drive.google.com/open?id=0B6pxb6O5OWfeWTdTQ3d1aUpUdFE <br/>
+
 ## Python Files Description
 voiceRecorder.py -- Records the voice commands in wave format, convert 44Khz to 16Khz audio wave and generates the spectrogram image. <br />
 
