@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Audio Recording Test</h1>
+
+    <div class="row">
+        <div class="col-md-6" style="margin: auto 0">
+            <audio id="recordAudio" controls>
+
+            </audio>
+            <button class="btn btn-primary" onclick="startAudioRecording()">Record</button>
+        </div>
+    </div>
+</div>
+<script src="recorderWorker.js"></script>
+<script>
+
+    var recordRTC;
+    var audio = document.getElementById("recordAudio");
+
+    function stopAudioRecording(audioURL){
+        console.log("audio URL");
+        console.log(audioURL);
+        audio.src = audioURL;
+        // recordRTC.save('testRecording.wav');
+        var formData = new FormData();
+        var recordedBlob = recordRTC.getBlob();
+        console.log("recordedBlob ");
+        console.log(recordedBlob);
+        formData.append('file', recordedBlob,"audioTest.wav");
+        // debugger
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5000/save/wavfile',
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: success,
+        });
+    }
+
+    function success(data,status){
+    //    debugger
+        console.log("success callback");
+        console.log(data);
+        console.log("status:");
+        console.log(status);
+
+    }
+
+    function startAudioRecording(){
+        console.log("starting audio");
+        recordRTC.startRecording();
+    }
+
+    function successCallback(mediaStream) {
+        // var options = {
+        //     type: 'audio',
+        // };
+
+        recordRTC = RecordRTC(mediaStream, {
+            type: 'audio',
+            recorderType: StereoAudioRecorder,
+            numberOfAudioChannels: 1,
+        });
+
+       recordRTC.setRecordingDuration(2 * 1000).onRecordingStopped(stopAudioRecording);
+
+    }
+
+    function errorCallback(error) {
+        alert("error in recording");
+        console.log(error);
+    }
+
+    var mediaConstraints = { video: false, audio: true };
+
+    if (navigator.getUserMedia) {
+        console.log('getUserMedia supported.');
+
+        navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+    } else {
+        console.log('getUserMedia not supported on your browser!');
+    }
+
+</script>
+
+</body>
+</html>

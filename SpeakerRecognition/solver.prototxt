@@ -1,0 +1,14 @@
+net: "New_SpeakerRecognition/caffeNet_Model/train_val.prototxt"
+test_iter: 20
+test_interval: 200
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 1800
+display: 40
+max_iter: 15000
+momentum: 0.5
+weight_decay: 0.0005
+snapshot: 1000
+snapshot_prefix: "New_SpeakerRecognition/models/new_caffenet_train_256_gray_0.5m"
+solver_mode: GPU

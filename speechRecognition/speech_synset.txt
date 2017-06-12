@@ -1,0 +1,4 @@
+close-the-gate 0
+open-the-gate 1
+turn-off-the-light 2
+turn-on-the-light 3
